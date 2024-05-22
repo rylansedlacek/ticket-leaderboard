@@ -77,7 +77,7 @@ function updateLeaderboardData() {
     const jsonData = JSON.stringify(leaderboardData);
 
     // Update the leaderboard data on GitHub using the GitHub API
-    const accessToken = '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'; // Replace with your GitHub access token
+    const accessToken = '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'; // Replace with your GitHub access token
     const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
 
     fetch(`https://api.github.com/gists/${gistId}`, {
