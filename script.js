@@ -1,4 +1,3 @@
-// Function to handle form submission
 function handleSubmit(event) {
     event.preventDefault();
     
@@ -88,11 +87,8 @@ function fetchLeaderboardData() {
     .then(data => {
         if (data.files && data.files['leaderboard.json']) {
             leaderboardData = JSON.parse(data.files['leaderboard.json'].content);
-        } else {
-            // If 'leaderboard.json' doesn't exist, initialize leaderboardData as an empty array
-            leaderboardData = [];
+            updateLeaderboardUI();
         }
-        updateLeaderboardUI();
     })
     .catch(error => {
         console.error('Error fetching leaderboard data:', error);
