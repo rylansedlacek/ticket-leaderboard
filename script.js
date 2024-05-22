@@ -1,6 +1,6 @@
 // Function to fetch leaderboard data from GitHub
 function fetchLeaderboardData() {
-    const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
+    const gistId = '1c76a038b0d4f62ebda6433201662f3b'; 
 
     fetch(`https://api.github.com/gists/${gistId}`)
     .then(response => {
@@ -15,7 +15,7 @@ function fetchLeaderboardData() {
             leaderboardData = content.trim() === '{}' ? [] : JSON.parse(content);
             console.log('Leaderboard Data:', leaderboardData); // Debug logging
         } else {
-            leaderboardData = []; // Initialize as an empty array if file doesn't exist
+            leaderboardData = []; 
             console.log('Leaderboard Data:', leaderboardData); // Debug logging
         }
         updateLeaderboardUI();
@@ -25,12 +25,10 @@ function fetchLeaderboardData() {
     });
 }
 
-// Function to update the leaderboard on the webpage
 function updateLeaderboardUI() {
     const leaderboard = document.getElementById('leaderboard');
     leaderboard.querySelector('tbody').innerHTML = '';
 
-    // Defensive check to ensure leaderboardData is an array
     if (!Array.isArray(leaderboardData)) {
         console.error('leaderboardData is not an array:', leaderboardData);
         return;
@@ -52,7 +50,6 @@ function handleSubmit(event) {
     const tickets = parseInt(document.getElementById('tickets').value || 0);
     const action = document.querySelector('input[name="action"]:checked').value;
 
-    // Check if the participant already exists
     const existingParticipantIndex = Array.isArray(leaderboardData) ? leaderboardData.findIndex(participant => participant.name === name) : -1;
 
     if (action === "update" && existingParticipantIndex !== -1) {
@@ -65,20 +62,16 @@ function handleSubmit(event) {
         leaderboardData.push({ name, car, tickets });
     }
 
-    // Update the leaderboard on the webpage
     updateLeaderboardUI();
-
-    // Update the leaderboard data on GitHub
     updateLeaderboardData();
 }
 
-// Function to update the leaderboard data on GitHub
+
 function updateLeaderboardData() {
     const jsonData = JSON.stringify(leaderboardData);
 
-    // Update the leaderboard data on GitHub using the GitHub API
-    const accessToken = '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'; // Replace with your GitHub access token
-    const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
+    const accessToken = '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'; 
+    const gistId = '1c76a038b0d4f62ebda6433201662f3b'; 
 
     fetch(`https://api.github.com/gists/${gistId}`, {
         method: 'PATCH',
@@ -106,11 +99,8 @@ function updateLeaderboardData() {
     });
 }
 
-// Initialize leaderboard data as an empty array
 let leaderboardData = [];
 
-// Fetch leaderboard data from GitHub on page load
 fetchLeaderboardData();
 
-// Event listener for form submission
 document.getElementById('signup-form').addEventListener('submit', handleSubmit);
