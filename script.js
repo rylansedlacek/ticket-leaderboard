@@ -1,6 +1,5 @@
-
 function fetchLeaderboardData() {
-    const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
+    const gistId = '1c76a038b0d4f62ebda6433201662f3b'; 
 
     fetch(`https://api.github.com/gists/${gistId}`)
     .then(response => {
@@ -15,8 +14,8 @@ function fetchLeaderboardData() {
             leaderboardData = content.trim() === '{}' ? [] : JSON.parse(content);
             console.log('Leaderboard Data:', leaderboardData); // Debug logging
         } else {
-            leaderboardData = []; // Initialize as an empty array if file doesn't exist
-            console.log('Leaderboard Data:', leaderboardData); // Debug logging
+            leaderboardData = []; 
+            console.log('Leaderboard Data:', leaderboardData); 
         }
         updateLeaderboardUI();
     })
@@ -25,7 +24,6 @@ function fetchLeaderboardData() {
     });
 }
 
-// Function to update the leaderboard on the webpage
 function updateLeaderboardUI() {
     const leaderboard = document.getElementById('leaderboard');
     leaderboard.querySelector('tbody').innerHTML = '';
@@ -43,7 +41,6 @@ function updateLeaderboardUI() {
     });
 }
 
-// Function to handle form submission
 function handleSubmit(event) {
     event.preventDefault();
     
@@ -65,14 +62,10 @@ function handleSubmit(event) {
         leaderboardData.push({ name, car, tickets });
     }
 
-    // Update the leaderboard on the webpage
     updateLeaderboardUI();
-
-    // Update the leaderboard data on GitHub
     updateLeaderboardData();
 }
 
-// Function to update the leaderboard data on GitHub
 function updateLeaderboardData() {
     const jsonData = JSON.stringify(leaderboardData);
 
@@ -106,11 +99,7 @@ function updateLeaderboardData() {
     });
 }
 
-// Initialize leaderboard data as an empty array
 let leaderboardData = [];
-
-// Fetch leaderboard data from GitHub on page load
 fetchLeaderboardData();
 
-// Event listener for form submission
 document.getElementById('signup-form').addEventListener('submit', handleSubmit);
