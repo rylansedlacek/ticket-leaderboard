@@ -1,4 +1,4 @@
-// Function to fetch leaderboard data from GitHub
+
 function fetchLeaderboardData() {
     const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
 
