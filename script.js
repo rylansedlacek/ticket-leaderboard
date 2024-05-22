@@ -45,7 +45,7 @@ function updateLeaderboardData() {
 
     // Update the leaderboard data on GitHub using the GitHub API
     const accessToken = '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'; // Replace with your GitHub access token
-    const gistId = 'https://gist.github.com/rylansedlacek/1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
+    const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
 
     fetch(`https://gist.github.com/rylansedlacek/${gistId}`, {
         method: 'PATCH',
@@ -81,7 +81,7 @@ fetchLeaderboardData();
 
 // Function to fetch leaderboard data from GitHub
 function fetchLeaderboardData() {
-    const gistId = 'https://gist.github.com/rylansedlacek/1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
+    const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
 
     fetch(`https://gist.github.com/rylansedlacek/${gistId}`)
     .then(response => response.json())
