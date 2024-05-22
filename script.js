@@ -92,7 +92,10 @@ function fetchLeaderboardData() {
     })
     .then(data => {
         if (data.files && data.files['leaderboard.json']) {
-            leaderboardData = JSON.parse(data.files['leaderboard.json'].content);
+            const content = data.files['leaderboard.json'].content;
+            leaderboardData = content.trim() === '{}' ? [] : JSON.parse(content);
+        } else {
+            leaderboardData = []; // Initialize as an empty array if file doesn't exist
         }
         updateLeaderboardUI();
     })
