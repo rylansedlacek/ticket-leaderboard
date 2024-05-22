@@ -1,64 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ticket leaderboard!</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 50%;
-            margin: 20px;
-        }
-
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+    <h1>Leaderboard</h1>
+    
+    <!-- Form for users to sign up -->
+    <form id="signup-form">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="car" placeholder="Type of Car" required>
+        <input type="number" id="tickets" placeholder="Number of Tickets">
+        <label><input type="radio" name="action" value="signup" checked> Sign Up</label>
+        <label><input type="radio" name="action" value="update"> Update</label>
+        <button type="submit">Submit</button>
+    </form>
 
-    <h2>welcome!</h2>
-    <p>this is a ticket leaderboard for UMW spring 2024</p>
-
-    <table>
+    <!-- Table to display leaderboard -->
+    <table id="leaderboard">
         <thead>
             <tr>
-                <th>name</th>
-                <th>num tickets</th>
+                <th>Name</th>
+                <th>Type of Car</th>
+                <th>Tickets</th>
+                <th>Date</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>emma</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>rylan</td>
-                <td>0</td>
-            </tr>
-
-            <tr>
-                <td>aidan</td>
-                <td>0</td>
-            </tr>
-
-            <tr>
-                <td>julia</td>
-                <td>NO CAR</td>
-            </tr>
-            
+            <!-- Leaderboard data will be dynamically added here -->
         </tbody>
     </table>
 
+    <script src="script.js"></script>
 </body>
-
 </html>
