@@ -1,38 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>UMW TICKET LEADERBOARD FALL 2024</h1>
-    
-    <!-- form for users to sign up -->
-    <form id="signup-form">
-        <input type="text" id="name" placeholder="Name" required>
-        <input type="text" id="car" placeholder="Type of Car" required>
-        <input type="number" id="tickets" placeholder="Number of Tickets">
-        <label><input type="radio" name="action" value="signup" checked> Sign Up</label>
-        <label><input type="radio" name="action" value="update"> Update</label>
-        <button type="submit">Submit</button>
-    </form>
+  <h1>Leaderboard</h1>
+  <div id="leaderboard"></div>
+  <form id="add-user-form">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="text" id="car" placeholder="Car" required>
+    <input type="number" id="num-tickets" placeholder="Num Tickets" required>
+    <button type="submit">Add/Update User</button>
+  </form>
 
-    <table id="leaderboard">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Type of Car</th>
-                <th>Tickets</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
-
-    <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
