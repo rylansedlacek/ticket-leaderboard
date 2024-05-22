@@ -28,7 +28,7 @@ function updateLeaderboardUI() {
     const leaderboard = document.getElementById('leaderboard');
     leaderboard.querySelector('tbody').innerHTML = '';
 
-    // Defensive check to ensure leaderboardData is an array
+
     if (!Array.isArray(leaderboardData)) {
         console.error('leaderboardData is not an array:', leaderboardData);
         return;
@@ -49,16 +49,14 @@ function handleSubmit(event) {
     const tickets = parseInt(document.getElementById('tickets').value || 0);
     const action = document.querySelector('input[name="action"]:checked').value;
 
-    // Check if the participant already exists
+
     const existingParticipantIndex = Array.isArray(leaderboardData) ? leaderboardData.findIndex(participant => participant.name === name) : -1;
 
     if (action === "update" && existingParticipantIndex !== -1) {
-        // If participant exists and action is update, update their tickets and date
         const date = new Date().toISOString(); // Current date and time
         leaderboardData[existingParticipantIndex].tickets += tickets;
         leaderboardData[existingParticipantIndex].date = date;
     } else {
-        // If participant doesn't exist or action is sign up, add them to the leaderboard
         leaderboardData.push({ name, car, tickets });
     }
 
@@ -69,9 +67,8 @@ function handleSubmit(event) {
 function updateLeaderboardData() {
     const jsonData = JSON.stringify(leaderboardData);
 
-    // Update the leaderboard data on GitHub using the GitHub API
-    const accessToken = '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'; // Replace with your GitHub access token
-    const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
+    const accessToken = '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'; 
+    const gistId = '1c76a038b0d4f62ebda6433201662f3b'; 
 
     fetch(`https://api.github.com/gists/${gistId}`, {
         method: 'PATCH',
