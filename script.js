@@ -47,7 +47,7 @@ function updateLeaderboardData() {
     const accessToken = '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'; // Replace with your GitHub access token
     const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
 
-    fetch(`https://gist.github.com/rylansedlacek/${gistId}`, {
+    fetch(`https://api.github.com/gists/${gistId}`, {
         method: 'PATCH',
         headers: {
             'Authorization': `token ${accessToken}`,
@@ -83,7 +83,7 @@ fetchLeaderboardData();
 function fetchLeaderboardData() {
     const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
 
-    fetch(`https://gist.github.com/rylansedlacek/${gistId}`)
+    fetch(`https://api.github.com/gists/${gistId}`)
     .then(response => response.json())
     .then(data => {
         if (data.files && data.files['leaderboard.json']) {
