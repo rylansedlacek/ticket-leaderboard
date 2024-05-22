@@ -44,10 +44,10 @@ function updateLeaderboardData() {
     const jsonData = JSON.stringify(leaderboardData);
 
     // Update the leaderboard data on GitHub using the GitHub API
-    const accessToken = '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'; // Replace with your GitHub access token
-    const gistId = 'https://api.github.com/gists/1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
+    const accessToken = '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'; // Replace with your GitHub access token
+    const gistId = 'https://gist.github.com/rylansedlacek/1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
 
-    fetch(`https://api.github.com/gists/${gistId}`, {
+    fetch(`https://gist.github.com/rylansedlacek/${gistId}`, {
         method: 'PATCH',
         headers: {
             'Authorization': `token ${accessToken}`,
@@ -83,7 +83,7 @@ fetchLeaderboardData();
 function fetchLeaderboardData() {
     const gistId = 'https://gist.github.com/rylansedlacek/1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
 
-    fetch(`https://api.github.com/gists/${gistId}`)
+    fetch(`https://gist.github.com/rylansedlacek/${gistId}`)
     .then(response => response.json())
     .then(data => {
         if (data.files && data.files['leaderboard.json']) {
