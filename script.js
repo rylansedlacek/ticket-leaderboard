@@ -73,7 +73,7 @@ function updateLeaderboardData() {
     });
 }
 
-// Initialize leaderboard data
+// Initialize leaderboard data as an empty array
 let leaderboardData = [];
 
 // Fetch leaderboard data from GitHub on page load
@@ -84,12 +84,17 @@ function fetchLeaderboardData() {
     const gistId = '1c76a038b0d4f62ebda6433201662f3b'; // Replace with the ID of your GitHub Gist
 
     fetch(`https://api.github.com/gists/${gistId}`)
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch leaderboard data');
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.files && data.files['leaderboard.json']) {
             leaderboardData = JSON.parse(data.files['leaderboard.json'].content);
-            updateLeaderboardUI();
         }
+        updateLeaderboardUI();
     })
     .catch(error => {
         console.error('Error fetching leaderboard data:', error);
