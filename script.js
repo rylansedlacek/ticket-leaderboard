@@ -88,8 +88,11 @@ function fetchLeaderboardData() {
     .then(data => {
         if (data.files && data.files['leaderboard.json']) {
             leaderboardData = JSON.parse(data.files['leaderboard.json'].content);
-            updateLeaderboardUI();
+        } else {
+            // If 'leaderboard.json' doesn't exist, initialize leaderboardData as an empty array
+            leaderboardData = [];
         }
+        updateLeaderboardUI();
     })
     .catch(error => {
         console.error('Error fetching leaderboard data:', error);
