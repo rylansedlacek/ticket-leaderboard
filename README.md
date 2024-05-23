@@ -1,4 +1,4 @@
-<h1>(NOT AFFILIATED WITH UMW)</h1> https://rylansedlacek.github.io/ticket-leaderboard/
+<h1>(NOT ASSOCIATED WITH UMW)</h1> https://rylansedlacek.github.io/ticket-leaderboard/
 
 -----------------------------------------------
 <b>PLEASE NOTE:</b>
