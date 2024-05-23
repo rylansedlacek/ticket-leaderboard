@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leaderboard</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
-  <h1>Leaderboard</h1>
-  <div id="leaderboard"></div>
-  <form id="add-user-form">
-    <input type="text" id="name" placeholder="Name" required>
-    <input type="text" id="car" placeholder="Car" required>
-    <input type="number" id="num-tickets" placeholder="Num Tickets" required>
-    <button type="submit">Add/Update User</button>
-  </form>
-
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-  <script src="script.js"></script>
+    <div class="container">
+        <h1>Ticket Leaderboard</h1>
+        <div class="form-container">
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="car" placeholder="Car">
+            <input type="number" id="tickets" placeholder="Number of Tickets">
+            <button onclick="addOrUpdateEntry()">Add/Update Entry</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Car</th>
+                    <th>Tickets</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard">
+                <!-- Entries will be injected here -->
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
+
