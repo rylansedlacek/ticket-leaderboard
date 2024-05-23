@@ -36,7 +36,7 @@ async function addOrUpdateEntry() {
             console.error("error writing document: ", error);
         }
     } else {
-        alert('FILL IN ALL FIELDS BRO.');
+        alert('all fields must be filled in.');
     }
 }
 
