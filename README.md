@@ -1,8 +1,11 @@
-this program is a joke. (NOT AFFILIATED WITH UMW) 
+<h1>(NOT AFFILIATED WITH UMW)</h1> https://rylansedlacek.github.io/ticket-leaderboard/
+
 -----------------------------------------------
-https://rylansedlacek.github.io/ticket-leaderboard/
------------------------------------------------
-NOTES:
+PLEASE NOTE:
+- this program is a <b>joke!</b>
+- this program <i>does not truly represent the level of tickets recieved by a particular person</i>.
 - image courtesy of: https://en.wikipedia.org/wiki/Mary_Washington_Eagles
-- database courtesy of: https://mockapi.io
-  
+- database service used: https://mockapi.io
+
+-------------------------------------------------
+<h2>Version 2.0 Summer 2024</h2>
