@@ -33,10 +33,10 @@ async function addOrUpdateEntry() {
             }
             fetchLeaderboard();
         } catch (error) {
-            console.error("Error writing document: ", error);
+            console.error("error writing document: ", error);
         }
     } else {
-        alert('Please fill in all fields.');
+        alert('FILL IN ALL FIELDS BRO.');
     }
 }
 
@@ -51,9 +51,9 @@ async function fetchLeaderboard() {
             leaderboard.appendChild(row);
         });
     } catch (error) {
-        console.error("Error fetching leaderboard: ", error);
+        console.error("error fetching leaderboard :( ", error);
     }
 }
 
-// Fetch leaderboard on page load
+// get board on load
 window.onload = fetchLeaderboard;
