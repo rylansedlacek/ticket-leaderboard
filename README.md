@@ -8,4 +8,4 @@
 - database service used: https://mockapi.io
 
 -------------------------------------------------
-<h2>Version 2.0 Summer 2024</h2>
+<h2>Version 1.1 Summer 2024</h2>
