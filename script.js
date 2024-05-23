@@ -7,80 +7,58 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyD9TL3mJCT9a_RajDZdPtnhUQNns_0c6-o",
-  authDomain: "ticket-c2705.firebaseapp.com",
-  databaseURL: "https://ticket-c2705-default-rtdb.firebaseio.com",
-  projectId: "ticket-c2705",
-  storageBucket: "ticket-c2705.appspot.com",
-  messagingSenderId: "374778677045",
-  appId: "1:374778677045:web:e7e1e1c95149e56ffbee7c",
-  measurementId: "G-B9W2JBNNHK"
+  apiKey: "AIzaSyBDjGkW4t8TEe_tI6Zgrw_BUuZ5-8rRn7k",
+  authDomain: "ticket2-3b63e.firebaseapp.com",
+  databaseURL: "https://ticket2-3b63e-default-rtdb.firebaseio.com",
+  projectId: "ticket2-3b63e",
+  storageBucket: "ticket2-3b63e.appspot.com",
+  messagingSenderId: "1083023057759",
+  appId: "1:1083023057759:web:c33f1ce6cd14ca0820ccea",
+  measurementId: "G-DCKJFTP836"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const db = firebase.firestore();
 
-// Get a reference to the database service
-const database = firebase.database();
+const nameInput = document.getElementById('name');
+const carInput = document.getElementById('car');
+const ticketsInput = document.getElementById('tickets');
+const leaderboard = document.getElementById('leaderboard');
 
-const leaderboardDiv = document.getElementById('leaderboard');
-const addUserForm = document.getElementById('add-user-form');
+function addOrUpdateEntry() {
+    const name = nameInput.value.trim();
+    const car = carInput.value.trim();
+    const tickets = parseInt(ticketsInput.value.trim(), 10);
 
-// Function to fetch leaderboard data
-async function fetchLeaderboard() {
-  const snapshot = await database.ref('leaderboard').orderByChild('num_tickets').once('value');
-  const data = snapshot.val();
-  displayLeaderboard(data);
+    if (name && car && !isNaN(tickets)) {
+        const docId = `${name}_${car}`;
+
+        db.collection('tickets').doc(docId).set({ name, car, tickets })
+            .then(() => {
+                console.log("Document successfully written!");
+                fetchLeaderboard();
+            })
+            .catch(error => {
+                console.error("Error writing document: ", error);
+            });
+    } else {
+        alert('Please fill in all fields.');
+    }
 }
 
-// Function to display leaderboard data
-function displayLeaderboard(data) {
-  leaderboardDiv.innerHTML = '';
-  const table = document.createElement('table');
-  const thead = document.createElement('thead');
-  const tbody = document.createElement('tbody');
-  const headerRow = document.createElement('tr');
-  const headers = ['Name', 'Car', 'Num Tickets'];
-
-  headers.forEach(headerText => {
-    const th = document.createElement('th');
-    th.textContent = headerText;
-    headerRow.appendChild(th);
-  });
-
-  thead.appendChild(headerRow);
-  table.appendChild(thead);
-
-  Object.values(data).forEach(userData => {
-    const row = document.createElement('tr');
-    Object.values(userData).forEach(value => {
-      const cell = document.createElement('td');
-      cell.textContent = value;
-      row.appendChild(cell);
+function fetchLeaderboard() {
+    leaderboard.innerHTML = '';
+    db.collection('tickets').get().then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+            const { name, car, tickets } = doc.data();
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${name}</td><td>${car}</td><td>${tickets}</td>`;
+            leaderboard.appendChild(row);
+        });
     });
-    tbody.appendChild(row);
-  });
-
-  table.appendChild(tbody);
-  leaderboardDiv.appendChild(table);
 }
 
-// Event listener for form submission
-addUserForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const formData = new FormData(addUserForm);
-  const userData = {};
-  formData.forEach((value, key) => {
-    userData[key] = value;
-  });
-
-  // Add/update user data in Firebase
-  await database.ref('leaderboard').push(userData);
-
-  // Refresh leaderboard
-  fetchLeaderboard();
-});
-
-// Initial fetch of leaderboard data
+// Fetch leaderboard on page load
 fetchLeaderboard();
