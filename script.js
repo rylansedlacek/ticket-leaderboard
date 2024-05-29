@@ -47,7 +47,7 @@ async function fetchLeaderboard() {
     try {
         const response = await fetch(apiUrl);
         const data = await response.json();
-        data.forEach(({ name, car, tickets }) => {
+        data.forEach(({ name, car, tickets, special }) => {
             const row = document.createElement('tr');
             row.innerHTML = `<td>${name}</td><td>${car}</td><td>${tickets}</td><td>${special}</td>`;
             leaderboard.appendChild(row);
