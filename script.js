@@ -16,9 +16,9 @@ async function addOrUpdateEntry() {
         const docId = `${name}_${car}`;
 
         try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-            const existingEntry = data.find(entry => entry.name === name && entry.car === car);
+    const response = await fetch(apiUrl);
+     const data = await response.json();
+        const existingEntry = data.find(entry => entry.name === name && entry.car === car);
 
             if (existingEntry) {
                 await fetch(`${apiUrl}/${existingEntry.id}`, {
@@ -34,9 +34,11 @@ async function addOrUpdateEntry() {
                 });
             }
             fetchLeaderboard();
+            
         } catch (error) {
             console.error("error writing document: ", error);
         }
+        
     } else {
         alert('all fields must be filled in.');
     }
