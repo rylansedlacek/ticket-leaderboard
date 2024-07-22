@@ -1,7 +1,5 @@
 <h1>Ticket Leaderboard</h1>
 
- <h3>thanks for the inspo emma.</h3>
-
 https://rylansedlacek.github.io/ticket-leaderboard/
 
 -----------------------------------------------
